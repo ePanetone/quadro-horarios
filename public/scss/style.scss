@@ -1,0 +1,166 @@
+@use 'sass:list';
+
+$cores-cursos: #0d6efd, #198754, #6f42c1, #fd7e14, #d63384, #20c997, #0aa2c0, #6c757d;
+$raio: 8px;
+
+body {
+  background: #f5f7fa;
+}
+
+// ===== Barra de conectados =====
+.online-bar {
+  background: #fff;
+  border-bottom: 1px solid #dee2e6;
+  padding: 0.5rem 0;
+
+  .pessoa {
+    font-size: 0.8rem;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: #e9f7ef;
+    color: #146c43;
+    border: 1px solid #b7e1c8;
+
+    &.eu {
+      background: #146c43;
+      color: #fff;
+    }
+  }
+}
+
+.busca-aluno {
+  max-width: 220px;
+}
+
+// ===== Cartão de aluno no horário =====
+.aula {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-left-width: 5px;
+  border-radius: $raio;
+  padding: 6px 8px;
+  margin-bottom: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  .aula-topo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 4px;
+  }
+
+  .aula-nome {
+    font-size: 0.9rem;
+    line-height: 1.2;
+    word-break: break-word;
+  }
+
+  .aula-acoes {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .obs {
+    color: #495057;
+    word-break: break-word;
+  }
+
+  @for $i from 0 to list.length($cores-cursos) {
+    $cor: list.nth($cores-cursos, $i + 1);
+
+    &.curso-#{$i} {
+      border-left-color: $cor;
+
+      .badge-curso {
+        background-color: $cor;
+        color: #fff;
+        font-weight: 500;
+        white-space: normal;
+        text-align: left;
+      }
+    }
+  }
+}
+
+.btn-icone {
+  border: 0;
+  background: transparent;
+  padding: 0 4px;
+  line-height: 1;
+  font-size: 0.95rem;
+  opacity: 0.6;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}
+
+.btn-add {
+  width: 100%;
+  opacity: 0.55;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+// ===== Tabela (computador e tablet) =====
+.quadro {
+  background: #fff;
+  min-width: 860px;
+  margin-bottom: 0;
+
+  th {
+    text-align: center;
+    background: #212529;
+    color: #fff;
+    vertical-align: middle;
+  }
+
+  .hora-col {
+    width: 110px;
+    background: #343a40;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  td {
+    vertical-align: top;
+    min-width: 150px;
+    height: 120px;
+    padding: 0.4rem;
+  }
+
+  .indisponivel {
+    background: repeating-linear-gradient(45deg, #e9ecef, #e9ecef 8px, #dee2e6 8px, #dee2e6 16px);
+  }
+}
+
+// ===== Celular =====
+.hora-mobile {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #495057;
+  margin-bottom: 6px;
+}
+
+@media (max-width: 767.98px) {
+  .btn-icone {
+    padding: 6px 8px;
+    font-size: 1.15rem;
+  }
+
+  .btn-add {
+    padding: 8px;
+    opacity: 0.8;
+  }
+
+  .busca-aluno {
+    max-width: 100%;
+    width: 100%;
+  }
+}

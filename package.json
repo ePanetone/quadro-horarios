@@ -1,0 +1,20 @@
+{
+  "name": "quadro-horarios",
+  "version": "1.0.0",
+  "description": "Quadro de horários em tempo real",
+  "main": "server.js",
+  "scripts": {
+    "sass": "sass public/scss/style.scss public/css/style.css --no-source-map",
+    "sass:watch": "sass --watch public/scss/style.scss:public/css/style.css",
+    "start": "npm run sass && node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5",
+    "sass": "^1.77.0"
+  }
+}
